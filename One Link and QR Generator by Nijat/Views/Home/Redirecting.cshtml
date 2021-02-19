@@ -1,0 +1,42 @@
+﻿@model URLS
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Redirecting</title>
+</head>
+<body>
+    Redirecting...
+
+    
+    
+    
+
+    <script>
+        function getMobileOperatingSystem() {
+            let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/windows phone/i.test(userAgent)) {
+                return alert("Windows Phone");
+            }
+
+            if (/android/i.test(userAgent)) {
+                return window.location.replace("@Model.GooglePlay");
+            }
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return window.location.replace("@Model.AppStore");
+            }
+
+            return  window.location.replace("@Model.Web");;
+        }
+
+        getMobileOperatingSystem()
+    </script>
+</body>
+</html>
